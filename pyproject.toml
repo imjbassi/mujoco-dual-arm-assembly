@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mujoco-dual-arm-assembly"
+version = "0.1.0"
+description = "A reproducible bimanual peg-in-hole assembly simulation in MuJoCo"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["mujoco>=3.3,<4", "numpy>=2,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.11", "build>=1"]
+record = ["imageio>=2.37", "pillow>=11"]
+
+[project.scripts]
+dual-arm = "dual_arm_assembly.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
