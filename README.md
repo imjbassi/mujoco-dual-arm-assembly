@@ -49,21 +49,24 @@ python -m dual_arm_assembly demo --camera closeup
 # One fast trial without a graphics context; writes JSON, CSV, and an HTML report.
 python -m dual_arm_assembly run --output runs/baseline
 
-# Change the assembly location across reproducible seeds.
+# Change the assembly location across reproducible seeds; summary.json includes
+# per-status counts and error/force statistics across trials.
 python -m dual_arm_assembly benchmark --trials 20 --seed 0
 
 # Deliberately hit the rim: terminates with a force-limit failure (exit code 1).
 python -m dual_arm_assembly run --offset-mm 12 --output runs/jam
 
-# Render an annotated GIF and a final PNG; requires the record extra and OpenGL.
+# Render an annotated MP4 video, GIF, and final PNG; requires the record extra
+# and OpenGL. Use --format mp4|gif|both to pick containers.
 python -m dual_arm_assembly record --camera closeup --output runs/movie
 
 # Export the complete, standalone MuJoCo scene.
 python -m dual_arm_assembly export --output runs/scene.xml
 ```
 
-Open `runs/baseline/report.html` for alignment, insertion-depth, and contact-force
-plots. Reports are standalone HTML with no server or network dependencies.
+Open `runs/baseline/report.html` for lateral-alignment, insertion-depth,
+axis-alignment, and contact-force plots with the success thresholds drawn as
+guide lines. Reports are standalone HTML with no server or network dependencies.
 `dual-arm` is also installed as a shorter command alias.
 
 ## What happens

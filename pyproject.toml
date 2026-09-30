@@ -13,7 +13,7 @@ dependencies = ["mujoco>=3.3,<4", "numpy>=2,<3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.11", "build>=1"]
-record = ["imageio>=2.37", "pillow>=11"]
+record = ["imageio>=2.37", "imageio-ffmpeg>=0.5", "pillow>=11"]
 
 [project.scripts]
 dual-arm = "dual_arm_assembly.cli:main"

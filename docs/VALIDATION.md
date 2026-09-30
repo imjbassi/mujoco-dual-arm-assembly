@@ -18,6 +18,13 @@ These measurements describe this simplified simulation, not hardware accuracy.
 | Passive desktop viewer | Opened, synchronized, and closed successfully |
 | Offscreen recording | Overview and close-up GIF/PNG generated and inspected |
 
+Re-verified on Linux, Python 3.11, MuJoCo 3.14.0, and NumPy 2.4.6: 19 tests
+passed, the randomized benchmark succeeded 20/20 with median and maximum peak
+contact force of 0.00 N, and the deliberate 12 mm bias aborted at the same
+7.962 s with a 36.016 N peak, matching the Windows run exactly. Offscreen
+OSMesa recording produced the annotated MP4 and GIF, and `summary.json` now
+carries per-status counts and lateral-error/axis-error/peak-force statistics.
+
 The tests include a regression check that the nominal arm posture stays above the
 table and the insertion wrist stays above the peg. This geometric check is not a
 general collision detector. Only peg/socket collisions participate in dynamics.

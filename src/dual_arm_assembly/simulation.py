@@ -82,6 +82,11 @@ class AssemblySimulation:
     def done(self):
         return self.status != "running"
 
+    @property
+    def progress(self):
+        """Fraction of the configured trial duration that has elapsed, in [0, 1]."""
+        return float(min(self.data.time / self.config.duration, 1.0))
+
     def measurements(self):
         socket = self.data.site("socket_center")
         peg = self.data.site("peg_tip")
